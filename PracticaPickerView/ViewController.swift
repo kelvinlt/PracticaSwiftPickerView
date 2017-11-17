@@ -17,12 +17,14 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet weak var bAnswer3: UIButton!
     @IBOutlet weak var lblPregunta: UILabel!
     
+    var listaPreguntas = [Pregunta]()
+    
     let temas = ["Leyendas Europeas","Leyendas Asiaticas","Leyendas Inglesas","Leyendas Global"]
     let europeaQ = ["Quien poseyo la espada Durandal de las leyendas de Carlomagno?","Que santa lidero Francia contra Inglaterra?",""]
     let asiaticaQ = ["De que pais es la leyenda de la Yuki Onna?","Con que signo representan los asiaticos la harmonia de todo?",""]
     let inglesasQ = ["Quien orquestro la caida del reino del rey Arturo?","",""]
     let globalQ = ["global","",""]
-    //
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         hideThings()
