@@ -22,7 +22,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     let asiaticaQ = ["De que pais es la leyenda de la Yuki Onna?","Con que signo representan los asiaticos la harmonia de todo?",""]
     let inglesasQ = ["Quien orquestro la caida del reino del rey Arturo?","",""]
     let globalQ = ["global","",""]
-    
+    //
     override func viewDidLoad() {
         super.viewDidLoad()
         hideThings()
