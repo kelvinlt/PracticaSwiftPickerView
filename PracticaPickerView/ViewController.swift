@@ -18,7 +18,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet weak var bAnswer4: UIButton!
     @IBOutlet weak var lblPregunta: UILabel!
     
-    var listaPreguntas = [Pregunta]()
+
     
     let pLE1 = Pregunta(pregunta: "Quien poseyo la espada Durandal de las legendas de Carlomago",opciones:["Astolfo","Roland","Oliver","Arpegio"] ,trueOpcion: 1, actual: 0
     )
@@ -38,27 +38,49 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     let pAs3 = Pregunta(pregunta: "Cual de los siguientes no es uno de los Cuatros Simbolos de las constelaciones Chinas?",opciones:["El Dragon Azul","El Pajaro Bermellon","La Tortuga Verde","El Tigre Blanco"] ,trueOpcion: 2, actual: 0
     )
     
+    let pIS1 = Pregunta(pregunta: "Quien orquestro la caida del reino del rey Arturo?",opciones:["Morgana","Merlin","Mordred","Lancelot"] ,trueOpcion: 0, actual: 0
+    )
     
-
+    let pIS2 = Pregunta(pregunta: "Segun los mitos Irlandeses que hay detras de un arcoiris?",opciones:["La Torre de Marfil","Un Leprecount","Una Caldera de Oro","El Borde del Mundo"] ,trueOpcion: 0, actual: 0
+    )
+    
+    let pIS3 = Pregunta(pregunta: "",opciones:["Morgana","Merlin","Mordred","Lancelot"] ,trueOpcion: 0, actual: 0
+    )
+    
+    var listaPreguntas = [Pregunta]()
+    var listaEuropa = [Pregunta]()
+    var listaAsia = [Pregunta]()
+    var listaInglatera = [Pregunta]()
+    
+    var respuestaNum : Int = 0
     
     
     let temas = ["Leyendas Europeas","Leyendas Asiaticas","Leyendas Inglesas","Leyendas Global"]
-    
-    let asiaticaQ = ["De que pais es la leyenda de la Yuki Onna?","Con que signo representan los asiaticos la harmonia de todo?","Cual de los siguientes no es uno de los Cuatros Simbolos de las constelaciones Chinas?"]
-    let inglesasQ = ["Quien orquestro la caida del reino del rey Arturo?","Segun los mitos Irlandeses que hay detras de un arcoiris?",""]
-    let globalQ = ["Cual de estos elementos no es del Wu Xing(5 elementos)?","",""]
     
     var actualNum: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         hideThings()
+        insertAllPreguntas()
 
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
 
+    }
+    
+    func insertAllPreguntas(){
+        listaEuropa.append(pLE1)
+        listaEuropa.append(pLE2)
+        listaEuropa.append(pLE3)
+        listaAsia.append(pAs1)
+        listaAsia.append(pAs2)
+        listaAsia.append(pAs3)
+        listaInglatera.append(pIS1)
+        listaInglatera.append(pIS2)
+        listaInglatera.append(pIS3)
     }
     
     func hideThings(){
@@ -88,6 +110,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         return temas[row]
     }
     
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         pView.isUserInteractionEnabled = false
         switch row {
@@ -95,19 +118,64 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
           //  lblPregunta.text = europeaQ[0]
             break;
         case 1:
-            lblPregunta.text = asiaticaQ[0]
+          // lblPregunta.text = asiaticaQ[0]
             break;
         case 2:
-            lblPregunta.text = inglesasQ[0]
+            lblPregunta.text = listaInglatera[0].pregunta
             break;
         case 3:
-            lblPregunta.text = globalQ[0]
+          //  lblPregunta.text = globalQ[0]
             break;
         default:
             break;
         }
         showButtons()
     }
+    
+    @IBAction func btn1(_ sender: Any) {
+        respuestaNum = 0
+        checkRespuesta(pr: lblPregunta.text!,respNum: respuestaNum)
+    }
+    @IBAction func btn2(_ sender: Any) {
+        respuestaNum = 1
+        checkRespuesta(pr: lblPregunta.text!,respNum: respuestaNum)
+    }
+    
+    @IBAction func btn3(_ sender: Any) {
+        respuestaNum = 2
+        checkRespuesta(pr: lblPregunta.text!,respNum: respuestaNum)
+    }
+    
+    @IBAction func btn4(_ sender: Any) {
+        respuestaNum = 3
+        checkRespuesta(pr: lblPregunta.text!,respNum: respuestaNum)
+    }
+    
+    @IBAction func btnAll(_ sender: Any) {
+        
+        
+        
+    }
+    
+    func checkRespuesta(pr : String, respNum : Int){
+        for u in listaInglatera {
+            if u.pregunta == pr{
+                if u.trueOpcion == respNum {
+                    lblPregunta.text = "RESPUESTA CORRECTA"
+                }
+            }
+        }
+    }
+    
+    func getRandomIngles(){
+        
+        
+        lblPregunta.text = listaInglatera[0].pregunta
+    }
+    
+    
+    
+    
     
 }
 
